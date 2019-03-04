@@ -1,10 +1,15 @@
 require("./common/manifest.js")
 require("./common/vendor.js")
-global.webpackJsonpMpvue([3],[
-/* 0 */,
-/* 1 */,
-/* 2 */,
-/* 3 */
+global.webpackJsonpMpvue([4],{
+
+/***/ 192:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 3:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12,18 +17,68 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__App__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__axios_index__ = __webpack_require__(42);
 
 
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.config.productionTip = false;
 __WEBPACK_IMPORTED_MODULE_1__App__["a" /* default */].mpType = 'app';
 
+// 导入axios 
+
+
 var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a(__WEBPACK_IMPORTED_MODULE_1__App__["a" /* default */]);
 app.$mount();
 
 /***/ }),
-/* 4 */,
-/* 5 */
+
+/***/ 42:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_promise__ = __webpack_require__(98);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_promise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_promise__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
+
+
+
+
+// 设置基准路径
+__WEBPACK_IMPORTED_MODULE_2_axios___default.a.defaults.baseURL = 'https://www.zhengzhicheng.cn/';
+// 因为小程序没有dom bom 概念所以要设置适配器
+__WEBPACK_IMPORTED_MODULE_2_axios___default.a.defaults.adapter = function (config) {
+  return new __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_promise___default.a(function (resolve, reject) {
+    wx.showLoading({
+      title: '加载中'
+    });
+
+    // console.log(config)
+    wx.request({
+      url: config.url, //开发者服务器接口地址",
+      data: config.data, //请求的参数",
+      method: config.method,
+      success: function success(res) {
+        resolve(res);
+      },
+      fail: function fail(err) {
+        reject(err);
+      },
+      complete: function complete() {
+        wx.hideLoading();
+      }
+    });
+  });
+};
+
+// 原型上挂载
+__WEBPACK_IMPORTED_MODULE_1_vue___default.a.prototype.$axios = __WEBPACK_IMPORTED_MODULE_2_axios___default.a;
+
+/***/ }),
+
+/***/ 5:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -31,7 +86,7 @@ app.$mount();
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(6)
+  __webpack_require__(192)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -74,13 +129,8 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 6 */
-/***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 7 */
+/***/ 7:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -97,23 +147,24 @@ if (false) {(function () {
      */
 
     var logs = void 0;
-    if (global.mpvuePlatform === 'my') {
-      logs = global.mpvue.getStorageSync({ key: 'logs' }).data || [];
+    if (global.mpvuePlatform === "my") {
+      logs = global.mpvue.getStorageSync({ key: "logs" }).data || [];
       logs.unshift(Date.now());
       global.mpvue.setStorageSync({
-        key: 'logs',
+        key: "logs",
         data: logs
       });
     } else {
-      logs = global.mpvue.getStorageSync('logs') || [];
+      logs = global.mpvue.getStorageSync("logs") || [];
       logs.unshift(Date.now());
-      global.mpvue.setStorageSync('logs', logs);
+      global.mpvue.setStorageSync("logs", logs);
     }
   },
   log: function log() {
-    console.log('log at:' + Date.now());
+    console.log("log at:" + Date.now());
   }
 });
 
 /***/ })
-],[3]);
+
+},[3]);

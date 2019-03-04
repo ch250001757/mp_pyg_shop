@@ -1,0 +1,17 @@
+<template name="ba8fdfda">
+  <view class="_view data-v-20829188 floor">
+    <view class="_view data-v-20829188 floor-head">
+      <image src="{{floor.floor_title.image_src}}" alt class="_img data-v-20829188"></image>
+    </view>
+    <view class="_view data-v-20829188 floor-body">
+      <view class="_view data-v-20829188 floor-body-left">
+        <image src="{{floor.product_list[0].image_src}}" class="_img data-v-20829188"></image>
+      </view>
+      <view class="_view data-v-20829188 floor-body-right">
+        <view wx:key="index" key="{{index}}" wx:for="{{getLast4}}" wx:for-index="index" wx:for-item="item" class="_view data-v-20829188">
+          <image src="{{item.image_src}}" class="_img data-v-20829188" style=" {{('width:' + (item.image_width + 'rpx') + ';')}}"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
