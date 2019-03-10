@@ -3,7 +3,10 @@
     "pages/home/main",
     "pages/category/main",
     "pages/shopcart/main",
-    "pages/my/main"
+    "pages/my/main",
+    "pages/goods_detail/main",
+    "pages/pay/main",
+    "pages/orders/main"
   ],
   "window": {
     "backgroundTextStyle": "light",

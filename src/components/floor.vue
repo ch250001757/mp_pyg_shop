@@ -23,21 +23,20 @@
 
 <script>
 export default {
-  props: ["floor"],
-  data() {
+  props: ['floor'],
+  data () {
     return {
-        floordata:[],
-    };
-    
+      floordata: []
+    }
   },
-//   过滤之后返回一个新数组
+  //   过滤之后返回一个新数组
   computed: {
-      getLast4(){
-        return  this.floor.product_list.filter((ele,i) => i>0)
-      }
-  },
+    getLast4 () {
+      return this.floor.product_list.filter((ele, i) => i > 0)
+    }
+  }
 
-};
+}
 </script>
 
 <style lang="less" scoped>

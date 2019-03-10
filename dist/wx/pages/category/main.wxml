@@ -1,2 +1,1 @@
-<!--pages/category/main.wxml-->
-<text>pages/category/main.wxml</text>
+<import src="/pages/category/index.vue.wxml" /><template is="14046b4e" data="{{ ...$root['0'], $root }}"/>

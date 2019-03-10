@@ -2,11 +2,16 @@
   <view>
     <!-- 轮播图 -->
     <swiper indicator-dots autoplay circular :interval="3000">
+      <!-- 点击轮播图声明式导航 -->
+
       <block v-for="(item,index) in swiperdata" :key="index">
-        <swiper-item>
-          <image :src="item.image_src" class="slide-image" />
-        </swiper-item>
+        <navigator :url="item.navigator_url">
+          <swiper-item>
+            <image :src="item.image_src" class="slide-image" />
+          </swiper-item>
+        </navigator>
       </block>
+
     </swiper>
     <!--  菜单-->
     <view class="categories">
@@ -36,24 +41,24 @@
 </template>
 
 <script>
-import floor from "../../components/floor";
+import floor from '../../components/floor'
 export default {
   components: {
     floor
   },
-  data() {
+  data () {
     return {
       swiperdata: [],
       category: [],
       floorData: [],
       isShowGoToTop: false
-    };
+    }
   },
   // 可以用小程序的声明周期
-  onLoad() {
-    this.getSwiperData();
-    this.getCategory();
-    this.getfloorData();
+  onLoad () {
+    this.getSwiperData()
+    this.getCategory()
+    this.getfloorData()
   },
   methods: {
     // 异步请求
@@ -64,43 +69,43 @@ export default {
     //   });
     // }
     // 改造async
-    async getSwiperData() {
-      var res = await this.$axios.get("/api/public/v1/home/swiperdata");
-      this.swiperdata = res.data.message;
+    async getSwiperData () {
+      var res = await this.$axios.get('/api/public/v1/home/swiperdata')
+      this.swiperdata = res.data.message
     },
-    async getCategory() {
-      var res = await this.$axios.get("api/public/v1/home/catitems");
+    async getCategory () {
+      var res = await this.$axios.get('api/public/v1/home/catitems')
       // console.log(res);
-      this.category = res.data.message;
+      this.category = res.data.message
     },
-    async getfloorData() {
-      var res = await this.$axios.get("api/public/v1/home/floordata");
-      console.log(res);
-      this.floorData = res.data.message;
+    async getfloorData () {
+      var res = await this.$axios.get('api/public/v1/home/floordata')
+      // console.log(res);
+      this.floorData = res.data.message
     },
-    goToTop() {
+    goToTop () {
       wx.pageScrollTo({
         scrollTop: 0,
         duration: 300
-      });
+      })
     }
   },
   // wx滚动事件
-  onPageScroll({ scrollTop }) {
+  onPageScroll ({ scrollTop }) {
     // 解构赋值
-    console.log(scrollTop);
+    // console.log(scrollTop);
     if (scrollTop > 90) {
       // 要设置下节流 不然 每次大于90 就会触发下面的参数
-      if (this.isShowGoToTop) return;
-      console.log("111");
-      this.isShowGoToTop = true;
+      if (this.isShowGoToTop) return
+      // console.log("111");
+      this.isShowGoToTop = true
     } else {
-      if (!this.isShowGoToTop) return;
-      console.log("2222");
-      this.isShowGoToTop = false;
+      if (!this.isShowGoToTop) return
+      // console.log("2222");
+      this.isShowGoToTop = false
     }
   }
-};
+}
 </script>
 
 <style lang="less" scoped>
